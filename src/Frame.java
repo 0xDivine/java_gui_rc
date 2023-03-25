@@ -21,6 +21,7 @@ public class Frame extends JFrame implements ActionListener {
     JCheckBox suiker;
     private ArrayList<Drank> dranken;
 
+    Panel panel;
 
     public Frame(Bar bar) {
 
@@ -29,6 +30,8 @@ public class Frame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dranken = new ArrayList<Drank>();
         this.setPreferredSize(new Dimension(700,100));
+
+
 
         this.setLayout(new FlowLayout());
 
@@ -59,6 +62,10 @@ public class Frame extends JFrame implements ActionListener {
         this.add(suiker);
         this.add(bestelwater);
         this.add(bekijk);
+
+        this.panel = new Panel();
+        this.add(panel);
+
 
         pack();
         setVisible(true);
@@ -166,6 +173,9 @@ public class Frame extends JFrame implements ActionListener {
     public static void main (String[]args){
         Bar b1 = new Bar();
         Frame frame = new Frame(b1);
+
+        Panel p1 = new Panel();
+        frame.add(p1);
 
     }
 
