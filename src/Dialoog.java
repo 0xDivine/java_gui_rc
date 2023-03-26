@@ -5,88 +5,75 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+public class Dialoog extends JDialog implements ActionListener {
 
-public class Dialoog extends Dialog  implements ActionListener{
+    Klas klas;
+    JTextField jtnaam;
+    JTextField jtblij;
 
-    Water water;
-    JTextField aantal;
-    JTextField hoeveelheid;
     JButton ok;
+    JButton cancel;
+    private ArrayList<Persoon> personenLijst;
 
-    private ArrayList<Drank> dranken;
+    Docent docent;
 
+    public Dialoog(Frame owner, ArrayList<Persoon> personenLijst) {
+        super(owner);
 
-    public Dialoog(Frame owner, boolean modal, ArrayList<Drank> dranken) {
-        super(owner, modal);
-
-        //this.setTitle("water");
+        this.personenLijst = personenLijst;
         this.setLayout(new FlowLayout());
-        this.dranken = dranken;
-        this.setPreferredSize(new Dimension(500,500));
+        this.setPreferredSize(new Dimension(500, 500));
 
 
-        add(new JLabel("type:"));
-        aantal = new JTextField();
-        aantal.setPreferredSize(new Dimension(200,25));
-
-        add(new JLabel("Hoeveel:"));
-        hoeveelheid = new JTextField();
-        hoeveelheid.setPreferredSize(new Dimension(200,25));
+        this.jtnaam = new JTextField();
+        jtnaam.setPreferredSize(new Dimension(200,25));
 
 
-        this.ok = new JButton("ok");
+        this.jtblij = new JTextField();
+        jtblij.setPreferredSize(new Dimension(200,25));
+
+        this.ok = new JButton("OK");
         this.ok.addActionListener(this);
 
+        this.cancel = new JButton("Cancel");
+        this.cancel.addActionListener(this);
 
-        this.add(aantal);
+        add(new JLabel("naam: "));
+        this.add(jtnaam);
+
+        add(new JLabel("blijheidwijziging"));
+        this.add(jtblij);
+
         this.add(ok);
-        this.add(hoeveelheid);
-
-    }
-
-    public Dialoog(Frame owner) {
-        super(owner);
-        this.setLayout(new FlowLayout());
+        this.add(cancel);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String type = aantal.getText();
-        String hoeveel = hoeveelheid.getText();
+        String naam = jtnaam.getText();
+        String blij = jtblij.getText();
 
 
 
         if(e.getSource() == ok){
 
-            Water[] a = new Water[Integer.parseInt(hoeveel)];
+            for(int i = 0; i<personenLijst.size(); i++){
 
-            for (int i = 0; i < a.length; i++) {
-                a[i] = new Water(type);
-                dranken.add(a[i]);
-                System.out.println(a[i]);
+                if(personenLijst.get(i).getNaam().equals(jtnaam.getText())){
+                    personenLijst.get(i).maakBlij(Integer.parseInt(blij));
+
+                }
+
+                System.out.println(personenLijst.get(i));
             }
-
-            dispose();
-
-            //Water a = new Water(value);
-            //dranken.add(a);
-            // System.out.println(a);
-
 
         }
 
 
-    }
-
-    public static void main(String[] args) {
-
-
-
 
     }
-
 
 
 
