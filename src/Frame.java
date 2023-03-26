@@ -38,17 +38,17 @@ public class Frame extends JFrame implements ActionListener {
         this.helpiemand = new JButton("help iemand");
         this.helpiemand.addActionListener(this);
 
-        add(new JLabel("naam:"));
+       // add(new JLabel("naam:"));
         this.jtnaam = new JTextField();
         jtnaam.setPreferredSize(new Dimension(200,25));
 
 
-        add(new JLabel("blij:"));
+       // add(new JLabel("blij:"));
         this.jtblij = new JTextField();
         jtblij.setPreferredSize(new Dimension(200,25));
 
 
-        add(new JLabel("s:"));
+        //add(new JLabel("s:"));
         this.jtS = new JTextField();
         jtS.setPreferredSize(new Dimension(200,25));
 
@@ -58,9 +58,11 @@ public class Frame extends JFrame implements ActionListener {
 
         this.add(tijdverstrijkt);
         this.add(helpiemand);
-
+        add(new JLabel("naam:"));
         this.add(jtnaam);
+        add(new JLabel("blij:"));
         this.add(jtblij);
+        add(new JLabel("s:"));
         this.add(jtS);
         this.add(voegtoe);
         this.add(panel);
