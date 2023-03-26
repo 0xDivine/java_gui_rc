@@ -69,7 +69,8 @@ public class Frame extends JFrame implements ActionListener {
 
 
         pack();
-        repaint();
+        Timer timer = new Timer(1000, e -> repaint());
+        timer.start();
         setVisible(true);
 
 
@@ -118,6 +119,7 @@ public class Frame extends JFrame implements ActionListener {
             Dialoog d1 = new Dialoog(this, personenLijst);
             d1.setVisible(true);
             setPreferredSize(new Dimension(500,500));
+            repaint();
 
         }
 
